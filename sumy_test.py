@@ -95,7 +95,7 @@ def summarize(doc, n_sentences = 4):
 
     return text
 
-summarize("hej")
+
 
 
 
