@@ -5,18 +5,6 @@ from sumy.summarizers.luhn import LuhnSummarizer
 import nltk
 nltk.download('punkt')
 
-doc="""
-The team migrates our previous solution for the data sources, sources at the daily and monthly level of the company's gross revenues, gross costs, and gross profit margins for Sinch from a Data warehouse in MYSQL to Snowflake. The reason for the transition to Snowflake is that it will be easier for Data Analysts, Product Managers, and Data Engineers to get into the system and the solution. With this, we move the technical solution closer to the business, to enable a more fast-moving organization. The strategy means that more teams will work in the same place with a similar tech stack, where we collect raw data in both batch and stream flows.
-
-The team creates a new data source with more information about the products that are available and to create it, more granular data was retrieved through Kafka queues in-stream feeds.
-
-Sinch is also interested in being able to do deeper analyzes to see how the whole company goes after all the costs and analyze these. A start in that is that we take in data from their consolidated financial system to be able to see Sinch year-end figures in a Data warehouse and analyze these in Tableau.
-
-Transformation is done with DBT and Snowflake. These handle both master files and slowly changing dimensions.
-
-Data were retrieved from various formats such as CSV, Parquet, or JSON formats.
-"""
-
 doc = '''
 Leading the mourning, the new Prime Minister Liz Truss said the Queen had been "the rock on which modern Britain was built".
 
@@ -89,19 +77,22 @@ The Queen died at her Balmoral estate in Scotland and Ms Sturgeon said she hoped
 Wales' First Minister Mark Drakeford said the Queen had "firmly upheld the values and traditions of the British Monarchy" and offered his "deepest condolences".
 '''
 
-#print(doc + '\n\n')
+def summarize(doc):
 
-# For Strings
-parser=PlaintextParser.from_string(doc,Tokenizer("english"))
-# Using KL
-summarizer = LuhnSummarizer()
-#Summarize the document with 4 sentences
-summary = summarizer(parser.document,4)
+    # For Strings
+    parser=PlaintextParser.from_string(doc,Tokenizer("english"))
+    # Using KL
+    summarizer = LuhnSummarizer()
+    #Summarize the document with 4 sentences
+    summary = summarizer(parser.document,4)
+    
+    text = []
+    
+    for sentence in summary:
+        text.append(sentence)
+    
+    return text
 
-for sentence in summary:
-    print(sentence)
-    
-    
     
     
     
