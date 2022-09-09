@@ -79,14 +79,14 @@ def queen_text():
     Wales' First Minister Mark Drakeford said the Queen had "firmly upheld the values and traditions of the British Monarchy" and offered his "deepest condolences".
     '''
 
-def summarize(doc):
+def summarize(doc, n_sentences = 4):
 
     # For Strings
     parser=PlaintextParser.from_string(doc,Tokenizer("english"))
     # Using KL
     summarizer = LuhnSummarizer()
     #Summarize the document with 4 sentences
-    summary = summarizer(parser.document,4)
+    summary = summarizer(parser.document, n_sentences)
     
     text = ""
     
@@ -95,7 +95,7 @@ def summarize(doc):
 
     return text
 
-
+summarize("hej")
 
 
 
