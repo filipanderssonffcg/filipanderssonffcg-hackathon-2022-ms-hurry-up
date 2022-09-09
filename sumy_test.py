@@ -86,14 +86,14 @@ def summarize(doc):
     #Summarize the document with 4 sentences
     summary = summarizer(parser.document,4)
     
-    text = []
+    text = ""
     
     for sentence in summary:
-        text.append(sentence)
-    
+        text += str(sentence)
+
     return text
 
-    
+
     
     
 
